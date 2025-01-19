@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, BookOpen, Lightbulb, Github, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Users, BookOpen, Lightbulb, Github } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import React from "react";
 import Link from "next/link";
@@ -25,9 +25,11 @@ export default function Home() {
 							        <ArrowRight className="ml-2 h-5 w-5" />
 							    </Button>
 							</Link>
-							<Button variant="outline" size="lg" className="text-purple-600 border-purple-600 hover:bg-purple-100">
-								Learn More
-							</Button>
+							<Link href="/about">
+								<Button variant="outline" size="lg" className="text-purple-600 border-purple-600 hover:bg-purple-100">
+									Learn More
+								</Button>
+							</Link>
 						</div>
 					</div>
 				</section>
