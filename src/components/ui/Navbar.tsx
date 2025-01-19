@@ -22,13 +22,7 @@ const Navbar = () => {
 		<nav className="fixed top-0 left-0 w-full border-b border-gray-200 z-50 bg-sky-400">
 			<div className="container mx-auto px-4 flex justify-between items-center ">
 				<Link href="/" className="flex items-center">
-                <Image 
-						src="../icon.svg" 
-						alt="StudentConnect Logo" 
-						width={150} 
-						height={150} 
-						className="w-22 h-22 pb-6 invert stroke-size-2"
-					/>
+					<Image src="../icon.svg" alt="StudentConnect Logo" width={100} height={100} className="mb-5 invert stroke-size-2" />
 					<div className="text-2xl font-semibold font-custom text-white">STUDENTCONNECT</div>
 				</Link>
 				<div className="flex items-center gap-4">
