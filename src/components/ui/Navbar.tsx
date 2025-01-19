@@ -40,7 +40,7 @@ const Navbar = () => {
               <Button
                 onClick={handleLogout}
                 variant="secondary"
-                className="bg-white text-sky-600 hover:bg-sky-100 transition-colors duration-200 font-medium px-6 py-2 rounded-lg shadow-sm"
+                className="bg-white text-sky-600 hover:bg-sky-100 transition-colors duration-200 font-medium px-6 py-2 rounded-lg font-custom text-lg"
               >
                 Logout
               </Button>
@@ -49,7 +49,7 @@ const Navbar = () => {
             <Button
               onClick={loginWithGoogle}
               variant="secondary"
-              className="bg-white text-sky-600 hover:bg-sky-100 transition-colors duration-200 font-medium px-6 py-2 rounded-lg shadow-sm flex items-center"
+              className="bg-white text-sky-600 hover:bg-sky-100 transition-colors duration-200 font-medium px-6 py-2 rounded-lg flex items-center font-custom text-lg"
             >
               Sign in
               <span className="ml-2">
