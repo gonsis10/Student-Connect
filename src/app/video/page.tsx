@@ -159,7 +159,7 @@ function App() {
                     Answer
                   </Button>
                 </div>
-                <Link href="/video-test" className="block">
+                <Link href="/dashboard" className="block">
                   <Button 
                     ref={refs.hangupButton} 
                     onClick={hangupCall}

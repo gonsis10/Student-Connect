@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
 import { loginWithGoogle, handleLogout } from '@/utils/handleLoginOut';
 import Link from 'next/link';
+import { Button } from './button';
 
 const Navbar = () => {
     const [user, setUser] = useState(auth.currentUser);
@@ -17,12 +18,10 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="fixed top-0 left-0 w-full border-b border-gray-200 z-50 bg-purple-600">
+        <nav className="fixed top-0 left-0 w-full border-b border-gray-200 z-50 bg-slate-100">
             <div className="container mx-auto px-4 py-2 flex justify-between items-center ">
-                <Link href={"/landing"}>
-                    <div className="text-lg font-semibold text-black">
-                        Student Connect
-                    </div>
+                <Link href="/" className='py-2 px-3 hover:bg-slate-200 rounded'>
+                    <span className="font-bold text-lg">Student Connect</span>
                 </Link>
                 <div className="flex items-center gap-4">
                     {user ? (
@@ -36,21 +35,21 @@ const Navbar = () => {
                                         className="w-8 h-8 rounded-full"
                                     />
                                 )}
-                                <button
+                                <Button
                                     onClick={handleLogout}
-                                    className="text-sm text-gray-900 hover:text-gray-800"
+                                    className="text-sm hover:text-gray-800"
                                 >
                                     Logout
-                                </button>
+                                </Button>
                             </div>
                         </>
                     ) : (
-                        <button 
+                        <Button 
                             onClick={loginWithGoogle}
-                            className="text-sm text-gray-900 hover:text-gray-800"
+                            className="text-sm hover:text-gray-300"
                         >
                             Sign in
-                        </button>
+                        </Button>
                     )}
                 </div>
             </div>
