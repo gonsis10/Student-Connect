@@ -24,7 +24,7 @@ const AboutPage = () => {
           <CardContent className="p-8">
             <p className="text-lg leading-relaxed text-gray-700 mb-6">
               Welcome to our Peer-to-Peer Video Chat app! Born during{' '}
-              <span className="text-sky-500 font-semibold">nwHacks</span>, we're four passionate
+              <span className="text-sky-500 font-semibold">nwHacks</span>, we&#39;re four passionate
               first-year students united by a vision to make meaningful connections more accessible.
             </p>
             <p className="text-lg leading-relaxed text-gray-700">
@@ -77,7 +77,7 @@ const AboutPage = () => {
         {/* Footer Quote */}
         <div className="text-center">
           <p className="text-lg text-gray-600 italic font-custom">
-            "Together, we aim to inspire connection, understanding, and community in an increasingly disconnected world."
+            &#34;Together, we aim to inspire connection, understanding, and community in an increasingly disconnected world.&#34;
           </p>
         </div>
       </div>
