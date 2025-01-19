@@ -3,10 +3,19 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, BookOpen, Lightbulb, Github } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
-import React from "react";
 import Link from "next/link";
+import { useAuth } from "../context/AuthContext";
+import { UserData } from "@/utils/handleLoginOut";
+import { loginWithGoogle } from "@/utils/handleLoginOut";
 
 export default function Home() {
+	const { user, setUser } = useAuth();
+
+	const handleSignInSuccess = (userData: UserData) => {
+		setUser(userData);
+		console.log(user);
+	};
+
 	return (
 		<div className="flex flex-col min-h-screen">
 			<header>
@@ -19,12 +28,15 @@ export default function Home() {
 						<h2 className="text-5xl font-bold sm:text-5xl lg:text-6xl bg-clip-text text-slate-800 font-custom">WELCOME TO STUDENT CONNECT</h2>
 						<p className="mt-6 text-2xl text-gray-600 pt-10">A place where students come together to learn, grow, and connect.</p>
 						<div className="mt-10 flex justify-center gap-4">
-							<Link href="/get-started">
-								<Button size="lg" className="bg-sky-400 hover:bg-sky-500 text-white font-semibold px-10 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200  font-custom text-lg">
-									Get Started
-									<ArrowRight className="ml-2 h-5 w-5" />
-								</Button>
-							</Link>
+							<Button
+								onClick={() => loginWithGoogle(handleSignInSuccess)}
+								size="lg"
+								className="bg-sky-400 hover:bg-sky-500 text-white font-semibold px-10 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200  font-custom text-lg"
+							>
+								Get Started
+								<ArrowRight className="ml-2 h-5 w-5" />
+							</Button>
+
 							<Link href="/about">
 								<Button variant="outline" size="lg" className="text-sky-600 border-sky-400 hover:bg-sky-50 font-semibold px-12 py-6 rounded-xl  font-custom text-lg">
 									Learn More
