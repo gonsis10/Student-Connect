@@ -1,5 +1,5 @@
-import {collection, addDoc, setDoc, onSnapshot, getDoc, updateDoc, doc} from 'firebase/firestore';
-import {db} from '@/firebase/firebaseConfig';
+import {collection, addDoc, setDoc, onSnapshot, getDoc, updateDoc, doc, getFirestore} from 'firebase/firestore';
+import app from '../firebase/firebaseConfig';
 import React from "react";
 
 let localStream: MediaStream | null = null;
@@ -60,8 +60,8 @@ const createCallOffer = async () => {
     // Reference Firestore collections for signaling
     const callDoc = doc(collection(db, "calls"));
 
-    const offerCandidates = doc(collection(callDoc, 'offerCandidates'));
-    const answerCandidates = doc(collection(callDoc, 'answerCandidates'));
+    const offerCandidates = collection(callDoc, 'offerCandidates');
+    const answerCandidates = collection(callDoc, 'answerCandidates');
 
     refs.callInput.current.value = callDoc.id;
 
@@ -84,7 +84,7 @@ const createCallOffer = async () => {
         type: offerDescription.type,
     };
 
-    await setDoc(doc(offerCandidates), offer);
+    await setDoc(callDoc, offer);
 
     // Listen for remote answer
     onSnapshot(callDoc, (snapshot) => {
@@ -149,6 +149,7 @@ const answerCall = async () => {
         throw new Error("Call does not exist. Please check the Call ID.");
     }
 
+    console.log(callData.data());
 
     const data = callData.data();
     console.log(data);
@@ -171,7 +172,7 @@ const answerCall = async () => {
         sdp: answerDescription.sdp,
     };
 
-    await updateDoc(doc(answerCandidates), answer);
+    await updateDoc(callDoc, answer);
 
     const iceCandidateQueue: RTCIceCandidate[] = [];
     onSnapshot(offerCandidates, (snapshot) => {
