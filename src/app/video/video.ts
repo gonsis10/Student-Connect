@@ -1,6 +1,6 @@
 "use client";
 
-import { collection, addDoc, setDoc, onSnapshot, getDoc, updateDoc, doc } from "firebase/firestore";
+import {collection, addDoc, setDoc, onSnapshot, getDoc, updateDoc, doc, deleteDoc} from "firebase/firestore";
 import { db } from "@/firebase/firebaseConfig";
 import React from "react";
 
@@ -92,11 +92,14 @@ const createCallOffer = async () => {
 		const data = snapshot.data();
 		if (!pc.currentRemoteDescription && data?.answer) {
 			const answerDescription = new RTCSessionDescription(data.answer);
-			pc.setRemoteDescription(answerDescription);
+			pc.setRemoteDescription(answerDescription).then(() => {
+				// Delete call document after the answer is received and set
+				deleteDoc(callDoc).then(console.log);
+			});
 		}
 	});
 
-	// Listen for remote ICE candidates
+// Listen for remote ICE candidates
 	onSnapshot(answerCandidates, (snapshot) => {
 		snapshot.docChanges().forEach((change) => {
 			if (change.type === "added") {
