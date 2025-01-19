@@ -1,9 +1,11 @@
+import Navbar from "@/components/ui/Navbar";
 import React from "react";
 
 const AboutPage: React.FC = () => {
     return (
         <div className="min-h-screen bg-gray-100 text-gray-800 p-8">
-            <div className="max-w-4xl mx-auto">
+            <Navbar />
+            <div className="max-w-4xl mx-auto pt-16">
                 <h1 className="text-4xl font-bold text-center mb-8">About Us</h1>
                 <p className="text-lg leading-relaxed mb-6">
                     Welcome to our Peer-to-Peer Video Chat app! This project was born during <a

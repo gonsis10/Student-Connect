@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from '@/firebase/firebaseConfig';
 import { loginWithGoogle, handleLogout } from '@/utils/handleLoginOut';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [user, setUser] = useState(auth.currentUser);
@@ -18,9 +19,11 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 w-full border-b border-gray-200 z-50 bg-purple-600">
             <div className="container mx-auto px-4 py-2 flex justify-between items-center ">
-                <div className="text-lg font-semibold text-black">
-                    Student Connect
-                </div>
+                <Link href={"/landing"}>
+                    <div className="text-lg font-semibold text-black">
+                        Student Connect
+                    </div>
+                </Link>
                 <div className="flex items-center gap-4">
                     {user ? (
                         <>
