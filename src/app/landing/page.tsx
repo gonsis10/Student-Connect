@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, BookOpen, Lightbulb } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
+import React from "react";
 
 export default function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
-			<Navbar />
+			<header>
+				<Navbar />
+			</header>
 
 			<main className="flex-grow">
 				<section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
