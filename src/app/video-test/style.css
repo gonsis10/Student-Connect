@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
-body {
+.App {
     font-family: 'Syne Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,4 +20,13 @@ video {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+button {
+    background: #2c3e50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
