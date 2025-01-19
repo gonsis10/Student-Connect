@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/app/context/AuthContext";
-import { loginWithGoogle, handleLogout } from "@/utils/handleLoginOut";
+import { loginWithGoogle } from "@/utils/handleLoginOut";
 import { UserData } from "@/utils/handleLoginOut";
 
 const Navbar = () => {
