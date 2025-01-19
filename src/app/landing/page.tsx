@@ -1,20 +1,11 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, BookOpen, Lightbulb } from "lucide-react";
+import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
-			<header className="py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-700 to-purple-900">
-				<div className="max-w-7xl mx-auto flex justify-between items-center">
-					<h1 className="text-3xl font-bold text-white">Student Connect</h1>
-					<nav className="space-x-4">
-						<Link href="/login" className="text-white hover:text-gray-200 transition">
-							Login
-						</Link>
-					</nav>
-				</div>
-			</header>
+			<Navbar />
 
 			<main className="flex-grow">
 				<section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
@@ -59,7 +50,7 @@ export default function Home() {
 	);
 }
 
-function FeatureCard({ icon, title, description }) {
+function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
 	return (
 		<div className="bg-white shadow-lg rounded-lg p-6 border border-purple-100">
 			<div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-md mb-4">{icon}</div>

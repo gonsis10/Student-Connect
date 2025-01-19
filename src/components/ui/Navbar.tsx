@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { signInWithPopup, GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
-import { auth, db } from '../../firebase/firebaseConfig';
+import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
+import { auth, db } from '@/firebase/firebaseConfig';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Navbar = () => {
@@ -50,7 +50,7 @@ const Navbar = () => {
         <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50">
             <div className="container mx-auto px-4 py-2 flex justify-between items-center">
                 <div className="text-lg font-semibold text-gray-800">
-                    Your App
+                    Student Connect
                 </div>
                 <div className="flex items-center gap-4">
                     {user ? (

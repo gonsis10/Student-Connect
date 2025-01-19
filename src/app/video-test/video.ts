@@ -1,7 +1,7 @@
 "use client";
 
 import { collection, addDoc, setDoc, onSnapshot, getDoc, updateDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase/firebaseConfig";
+import { db } from "@/firebase/firebaseConfig";
 import React from "react";
 
 let localStream: MediaStream | null = null;
@@ -153,17 +153,29 @@ const answerCall = async () => {
 };
 
 const hangupCall = () => {
-	pc.close();
-	localStream?.getTracks().forEach((track) => {
-		track.stop();
-	});
-	remoteStream?.getTracks().forEach((track) => {
-		track.stop();
-	});
-	refs.webcamButton.current.disabled = false;
-	refs.callButton.current.disabled = true;
-	refs.answerButton.current.disabled = true;
-	refs.hangupButton.current.disabled = true;
+
+	// Cleanup and hang up the call
+	if (pc) {
+		pc.close();
+		pc.onicecandidate = null;
+		pc.ontrack = null;
+	}
+
+	// Reset local and remote streams
+	localStream?.getTracks().forEach((track) => track.stop());
+	localStream = null;
+	remoteStream = null;
+
+	// Reset UI elements
+	if (refs) {
+		refs.webcamVideo.current.srcObject = null;
+		refs.remoteVideo.current.srcObject = null;
+
+		refs.callButton.current.disabled = true;
+		refs.answerButton.current.disabled = true;
+		refs.hangupButton.current.disabled = true;
+		refs.webcamButton.current.disabled = false;
+	}
 };
 
 export { startWebcam, createCallOffer, answerCall, hangupCall, initializeRefs, initializePeerConnection };
