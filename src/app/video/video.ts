@@ -9,11 +9,7 @@ let remoteStream: MediaStream | null = null;
 
 // HTML elements
 type VideoRefs = {
-	webcamButton: React.RefObject<HTMLButtonElement>;
 	webcamVideo: React.RefObject<HTMLVideoElement>;
-	callButton: React.RefObject<HTMLButtonElement>;
-	callInput: React.RefObject<HTMLInputElement>;
-	answerButton: React.RefObject<HTMLButtonElement>;
 	remoteVideo: React.RefObject<HTMLVideoElement>;
 	hangupButton: React.RefObject<HTMLButtonElement>;
 };
@@ -51,10 +47,6 @@ const startWebcam = async () => {
 
 	refs.webcamVideo.current.srcObject = localStream;
 	refs.remoteVideo.current.srcObject = remoteStream;
-
-	refs.callButton.current.disabled = false;
-	refs.answerButton.current.disabled = false;
-	refs.webcamButton.current.disabled = true;
 };
 
 // 2. Create an offer
@@ -63,8 +55,6 @@ const createCallOffer = async () => {
 	const callDoc = doc(collection(db, "calls"));
 	const offerCandidates = collection(callDoc, "offerCandidates");
 	const answerCandidates = collection(callDoc, "answerCandidates");
-
-	refs.callInput.current.value = callDoc.id;
 
 	// Get candidates for caller, save to db
 	pc.onicecandidate = (event) => {
@@ -113,8 +103,9 @@ const createCallOffer = async () => {
 };
 
 // 3. Answer the call with the unique ID
-const answerCall = async () => {
-	const callId = refs.callInput.current.value;
+const answerCall = async (callId: string) => {
+	if (callId == null || callId === "") return
+
 	const callDoc = doc(db, "calls", callId);
 	const offerCandidates = collection(callDoc, "offerCandidates");
 	const answerCandidates = collection(callDoc, "answerCandidates");
@@ -174,10 +165,7 @@ const hangupCall = () => {
 		refs.webcamVideo.current.srcObject = null;
 		refs.remoteVideo.current.srcObject = null;
 
-		refs.callButton.current.disabled = true;
-		refs.answerButton.current.disabled = true;
 		refs.hangupButton.current.disabled = true;
-		refs.webcamButton.current.disabled = false;
 	}
 };
 
