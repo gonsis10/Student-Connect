@@ -103,9 +103,8 @@ function App() {
 					// If no callId is provided, create the call
 					createCallOffer().then(console.log).catch(console.error);
 				}
-			})
+			});
 		}, 1000);
-
 	}, [refs]);
 
 	return (
