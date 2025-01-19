@@ -32,7 +32,10 @@ const loginWithGoogle = async (onSignInSuccess: (userData: UserData) => void) =>
 			await setDoc(userDocRef, userData);
 		}
 
-		onSignInSuccess(userData);
+		if (onSignInSuccess) {
+			onSignInSuccess(userData);	
+		}
+		window.location.href = "/dashboard";
 	} catch (error) {
 		console.error("Login error:", error);
 	}
