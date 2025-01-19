@@ -7,6 +7,7 @@ import { Button } from "./button";
 import Link from "next/link";
 import { Key } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Navbar = () => {
 	const { user, setUser } = useAuth();
@@ -19,8 +20,15 @@ const Navbar = () => {
 
 	return (
 		<nav className="fixed top-0 left-0 w-full border-b border-gray-200 z-50 bg-sky-400">
-			<div className="container mx-auto px-4 py-2 flex justify-between items-center ">
-				<Link href="/">
+			<div className="container mx-auto px-4 flex justify-between items-center ">
+				<Link href="/" className="flex items-center">
+                <Image 
+						src="../icon.svg" 
+						alt="StudentConnect Logo" 
+						width={150} 
+						height={150} 
+						className="w-22 h-22 pb-6 invert stroke-size-2"
+					/>
 					<div className="text-2xl font-semibold font-custom text-white">STUDENTCONNECT</div>
 				</Link>
 				<div className="flex items-center gap-4">
