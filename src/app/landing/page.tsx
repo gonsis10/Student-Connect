@@ -5,8 +5,6 @@ import { ArrowRight, Users, BookOpen, Lightbulb, Github } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import hero from '../images/hero.jpg'
 
 export default function Home() {
 	return (
@@ -17,7 +15,7 @@ export default function Home() {
 
 			<main className="flex-grow">
 				<section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-					<div className="max-w-4xl mx-auto text-center">
+					<div className="max-w-4xl mx-auto text-center pt-20">
 						<h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">Welcome to Student Connect</h2>
 						<p className="mt-5 text-xl text-gray-500">A place where students come together to learn, grow, and connect.</p>
 						<div className="mt-8 flex justify-center">
