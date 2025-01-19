@@ -11,7 +11,9 @@ type AuthContextType = {
 // Define the User type
 type User = {
 	id?: string;
-	email?: string;
+	email?: string | null;
+	photoURL?: string | null;
+	displayName?: string | null;
 	// ... other user properties
 };
 

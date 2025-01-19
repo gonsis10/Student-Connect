@@ -7,9 +7,11 @@ import Link from "next/link";
 import { useAuth } from "../context/AuthContext";
 import { UserData } from "@/utils/handleLoginOut";
 import { loginWithGoogle } from "@/utils/handleLoginOut";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
 	const { user, setUser } = useAuth();
+	const router = useRouter();
 
 	const handleSignInSuccess = (userData: UserData) => {
 		setUser({
@@ -32,7 +34,13 @@ export default function Home() {
 						<p className="mt-6 text-2xl text-gray-600 pt-10">A place where students come together to learn, grow, and connect.</p>
 						<div className="mt-10 flex justify-center gap-4">
 							<Button
-								onClick={() => loginWithGoogle(handleSignInSuccess)}
+								onClick={() => {
+									if (user) {
+										router.push("/dashboard");
+									} else {
+										loginWithGoogle(handleSignInSuccess);
+									}
+								}}
 								size="lg"
 								className="bg-sky-400 hover:bg-sky-500 text-white font-semibold px-10 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200  font-custom text-lg"
 							>
