@@ -1,65 +1,84 @@
 'use client';
 
-import React from 'react';
-import { signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { signInWithPopup, GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { auth, db } from '../../firebase/firebaseConfig';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-const Navbar: React.FC = () => {
-
+const Navbar = () => {
+    const [user, setUser] = useState(auth.currentUser);
     const provider = new GoogleAuthProvider();
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setUser(user);
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     const loginWithGoogle = async () => {
         try {
-            await signInWithPopup(auth, provider);
-            const user = auth.currentUser;
-            if(user){
-                const userDocRef = doc(db, "users", user.uid);
-                const userDocSnapshot = await getDoc(userDocRef);
-                if(!userDocSnapshot.exists()){
-                    await setDoc(userDocRef, {
-                        userId: user.uid,
-                        email: user.email,
-                    })
-                }
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            
+            const userDocRef = doc(db, "users", user.uid);
+            const userDocSnapshot = await getDoc(userDocRef);
+            
+            if (!userDocSnapshot.exists()) {
+                await setDoc(userDocRef, {
+                    userId: user.uid,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    displayName: user.displayName
+                });
             }
-        } catch (error: any) {
-            console.error(error);
+        } catch (error) {
+            console.error("Login error:", error);
         }
     };
 
-    const handleGoogleSignIn = async () => {
-        const provider = new GoogleAuthProvider();
+    const handleLogout = async () => {
         try {
-            const result = await signInWithPopup(auth, provider);
-            // The signed-in user info
-            const user = result.user;
-            console.log("Signed in user:", user);
-        } catch (error: any) {
-            // Handle Errors here
-            console.error("Google Sign-In Error:", error);
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used
-            const email = error.customData?.email;
-            // The AuthCredential type that was used
-            const credential = GoogleAuthProvider.credentialFromError(error);
+            await signOut(auth);
+        } catch (error) {
+            console.error("Logout error:", error);
         }
     };
 
     return (
-        <nav className="fixed top-0 left-0 w-full bg-gray-800 text-white shadow-md z-50">
-            <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-                <div className="text-xl font-bold">
-                    Your App Name
+        <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50">
+            <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+                <div className="text-lg font-semibold text-gray-800">
+                    Your App
                 </div>
-                <div>
-                    <button 
-                        onClick={loginWithGoogle}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
-                    >
-                        Login with Google
-                    </button>
+                <div className="flex items-center gap-4">
+                    {user ? (
+                        <>
+                            <div className="flex items-center gap-3">
+                                {user.photoURL && (
+                                    <img 
+                                        src={user.photoURL} 
+                                        alt="Profile" 
+                                        className="w-8 h-8 rounded-full"
+                                    />
+                                )}
+                                <button
+                                    onClick={handleLogout}
+                                    className="text-sm text-gray-600 hover:text-gray-800"
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <button 
+                            onClick={loginWithGoogle}
+                            className="text-sm text-gray-600 hover:text-gray-800"
+                        >
+                            Sign in
+                        </button>
+                    )}
                 </div>
             </div>
         </nav>
