@@ -16,8 +16,8 @@ export default function Home() {
 			<main className="flex-grow">
 				<section className="py-24 pt-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-sky-400/20 to-white">
 					<div className="max-w-4xl mx-auto text-center pt-20">
-						<h2 className="text-5xl font-bold sm:text-5xl lg:text-6xl bg-clip-text text-transparent text-slate-800 font-custom">WELCOME TO STUDENT CONNECT</h2>
-						<p className="mt-6 text-2xl text-gray-600 font-custom pt-10">A place where students come together to learn, grow, and connect.</p>
+						<h2 className="text-5xl font-bold sm:text-5xl lg:text-6xl bg-clip-text text-slate-800 font-custom">WELCOME TO STUDENT CONNECT</h2>
+						<p className="mt-6 text-2xl text-gray-600 pt-10">A place where students come together to learn, grow, and connect.</p>
 						<div className="mt-10 flex justify-center gap-4">
 							<Link href="/get-started">
 								<Button size="lg" className="bg-sky-400 hover:bg-sky-500 text-white font-semibold px-10 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200  font-custom text-lg">
@@ -34,7 +34,7 @@ export default function Home() {
 					</div>
 				</section>
 
-				<section className="py-20 px-4 sm:px-6 lg:px-8 bg-white font-custom text-lg">
+				<section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-lg">
 					<div className="max-w-7xl mx-auto">
 						<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 							<FeatureCard
@@ -98,7 +98,7 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
 	return (
 		<div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-200 text-center border border-sky-100">
 			<div className="mb-6 flex justify-center">{icon}</div>
-			<h3 className="text-2xl font-semibold mb-4 text-gray-900">{title}</h3>
+			<h3 className="text-2xl font-semibold mb-4 text-gray-900 font-custom">{title}</h3>
 			<p className="text-gray-600 text-lg leading-relaxed">{description}</p>
 		</div>
 	);
