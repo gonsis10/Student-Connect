@@ -5,6 +5,8 @@ import { ArrowRight, Users, BookOpen, Lightbulb, Github } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import hero from '../images/hero.jpg'
 
 export default function Home() {
 	return (
