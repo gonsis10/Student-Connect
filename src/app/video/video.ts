@@ -104,7 +104,15 @@ const createCallOffer = async () => {
 
 // 3. Answer the call with the unique ID
 const answerCall = async (callId: string) => {
-	if (callId == null || callId === "") return
+	if (callId == null || callId === "") {
+		console.error("Call ID is required.");
+		return;
+	}
+
+	if (pc == null) {
+		console.error("Peer connection is not initialized.");
+		return;
+	}
 
 	const callDoc = doc(db, "calls", callId);
 	const offerCandidates = collection(callDoc, "offerCandidates");
