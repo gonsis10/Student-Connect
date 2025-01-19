@@ -73,7 +73,6 @@ body {
 
 @font-face {
 	font-family: "Virgil"; /* Replace with your desired font name */
-	src: url("/fonts/virgil.woff2") format("woff2");
 	font-weight: normal; /* Specify font weights if needed */
 	font-style: normal; /* Specify font styles if needed */
 }

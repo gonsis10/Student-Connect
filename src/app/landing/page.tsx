@@ -12,7 +12,10 @@ export default function Home() {
 	const { user, setUser } = useAuth();
 
 	const handleSignInSuccess = (userData: UserData) => {
-		setUser(userData);
+		setUser({
+			...userData,
+			email: userData.email ?? undefined,
+		});
 		console.log(user);
 	};
 
