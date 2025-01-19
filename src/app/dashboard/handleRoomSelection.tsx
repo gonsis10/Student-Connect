@@ -4,18 +4,18 @@ import { db } from "@/firebase/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 
-const fetchcalls = async () => {
-    const querySnapshot = await getDocs(collection(db, "calls"));
+const fetchcalls = () => {
+    getDocs(collection(db, "calls")).then((querySnapshot) => {
+        if (querySnapshot.empty) {
+            console.log("No matching documents.");
+            return null;
+        }
 
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id);
+        return querySnapshot.docs[Math.floor(Math.random()*(querySnapshot.docs.length))].id;
+    }).catch((error) => {
+        console.log("Error getting documents: ", error);
+        return null;
     });
-
-    return 0;
-
 }
-
-
 
 export { fetchcalls } ;
