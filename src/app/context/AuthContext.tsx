@@ -12,6 +12,8 @@ type AuthContextType = {
 type User = {
 	id?: string;
 	email?: string | null;
+	photoURL?: string | null;
+	displayName?: string | null;
 	// ... other user properties
 };
 
