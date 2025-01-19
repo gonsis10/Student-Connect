@@ -65,6 +65,26 @@ function App() {
 				{
 					urls: ["stun:stun1.l.google.com:19302", "stun:stun2.l.google.com:19302"],
 				},
+				{
+					urls: "turn:global.relay.metered.ca:80",
+					username: "fce59371acabe2e99f8755ad",
+					credential: "qovyPoRp1pZiE/l6",
+				},
+				{
+					urls: "turn:global.relay.metered.ca:80?transport=tcp",
+					username: "fce59371acabe2e99f8755ad",
+					credential: "qovyPoRp1pZiE/l6",
+				},
+				{
+					urls: "turn:global.relay.metered.ca:443",
+					username: "fce59371acabe2e99f8755ad",
+					credential: "qovyPoRp1pZiE/l6",
+				},
+				{
+					urls: "turns:global.relay.metered.ca:443?transport=tcp",
+					username: "fce59371acabe2e99f8755ad",
+					credential: "qovyPoRp1pZiE/l6",
+				},
 			],
 			iceCandidatePoolSize: 10,
 		});
