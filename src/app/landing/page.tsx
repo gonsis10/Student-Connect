@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, BookOpen, Lightbulb, Github, Linkedin, Twitter } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import React from "react";
+import Link from "next/link";
 
 export default function Home() {
 	return (
@@ -18,10 +19,12 @@ export default function Home() {
 						<h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">Welcome to Student Connect</h2>
 						<p className="mt-5 text-xl text-gray-500">A place where students come together to learn, grow, and connect.</p>
 						<div className="mt-8 flex justify-center">
-							<Button size="lg" className="mr-4 bg-purple-600 hover:bg-purple-700 text-white">
-								Get Started
-								<ArrowRight className="ml-2 h-5 w-5" />
-							</Button>
+							<Link href="/get-started">
+							    <Button size="lg" className="mr-4 bg-purple-600 hover:bg-purple-700 text-white">
+							        Get Started
+							        <ArrowRight className="ml-2 h-5 w-5" />
+							    </Button>
+							</Link>
 							<Button variant="outline" size="lg" className="text-purple-600 border-purple-600 hover:bg-purple-100">
 								Learn More
 							</Button>
