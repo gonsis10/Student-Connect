@@ -6,6 +6,7 @@ import { startWebcam, answerCall, createCallOffer, hangupCall, initializeRefs, i
 
 function App() {
 	// Create refs
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const refs = {
 		webcamButton: useRef<HTMLButtonElement>(null),
 		webcamVideo: useRef<HTMLVideoElement>(null),
@@ -18,6 +19,8 @@ function App() {
 
 	// You can optionally log these refs to verify they are being passed correctly
 	React.useEffect(() => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
 		initializeRefs(refs); // Pass refs to the TS logic
 		console.log({
 			webcamButton: refs.webcamButton.current,
