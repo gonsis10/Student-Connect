@@ -8,7 +8,7 @@ const fetchcalls = async () => {
     const querySnapshot = await getDocs(collection(db, "calls"));
     if (querySnapshot.empty) {
         console.log("No matching documents.");
-        return '';
+        return 'null';
     }
 
     const roomId = querySnapshot.docs[Math.floor(Math.random()*(querySnapshot.docs.length))].id;
