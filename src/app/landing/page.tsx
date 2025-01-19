@@ -1,19 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, BookOpen, Lightbulb } from "lucide-react";
+import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
 	return (
 		<div className="flex flex-col min-h-screen">
-			<header className="py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-700 to-purple-900">
-				<div className="max-w-7xl mx-auto flex justify-between items-center">
-					<h1 className="text-3xl font-bold text-white">Student Connect</h1>
-					<nav className="space-x-4">
-						<Link href="/login" className="text-white hover:text-gray-200 transition">
-							Login
-						</Link>
-					</nav>
-				</div>
+			<header>
+				<Navbar />
 			</header>
 
 			<main className="flex-grow">
