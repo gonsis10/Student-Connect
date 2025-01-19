@@ -57,32 +57,18 @@ export default function Home() {
 				</section>
 			</main>
 
-			<footer className="bg-sky-400 text-white py-16 font-small font-custom text-lg">
+			<footer className="bg-sky-400 text-white py-16 font-small text-lg">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 						<div>
-							<h3 className="text-2xl font-bold mb-4">Student Connect</h3>
+							<h3 className="text-2xl font-bold mb-4 font-custom">Student Connect</h3>
 							<p className="text-sky-50 text-lg">Bringing students together to learn, grow, and connect.</p>
 						</div>
+
 						<div>
-							<h4 className="text-xl font-semibold mb-4">Quick Links</h4>
-							<ul className="space-y-3">
-								<li>
-									<a href="#" className="text-sky-50 hover:text-white transition-colors duration-200">
-										Home
-									</a>
-								</li>
-								<li>
-									<a href="#" className="text-sky-50 hover:text-white transition-colors duration-200">
-										About
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div>
-							<h4 className="text-xl font-semibold mb-4">Connect With Us</h4>
+							<h4 className="text-xl font-semibold mb-4 font-custom">Connect With Us</h4>
 							<div className="flex space-x-4">
-								<a href="https://github.com/owenHochwald/nw_hacks" className="text-white hover:text-sky-100 transition-colors duration-200" target="_blank" rel="noopener noreferrer">
+								<a href="https://github.com/nw25coders/chat" className="text-white hover:text-sky-100 transition-colors duration-200" target="_blank" rel="noopener noreferrer">
 									<Github className="h-8 w-8" />
 								</a>
 							</div>
