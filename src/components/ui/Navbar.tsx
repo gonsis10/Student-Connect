@@ -6,9 +6,11 @@ import { UserData } from "@/utils/handleLoginOut";
 import { Button } from "./button";
 import Link from "next/link";
 import { Key } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
 	const { user, setUser } = useAuth();
+	const router = useRouter();
 
 	const handleSignInSuccess = (userData: UserData) => {
 		setUser(userData);
@@ -31,7 +33,10 @@ const Navbar = () => {
 								)}
 								<span className="text-white font-bold">Hi, {user.displayName}</span>
 								<Button
-									onClick={() => setUser(null)}
+									onClick={() => {
+										setUser(null);
+										router.push("/landing");
+									}}
 									variant="secondary"
 									className="font-custom bg-white text-sky-600 hover:bg-sky-100 transition-colors duration-200 font-medium px-6 py-2 rounded-lg shadow-sm custom"
 								>
