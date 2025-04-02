@@ -1,14 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import {
-	startWebcam,
-	answerCall,
-	createCallOffer,
-	hangupCall,
-	initializeRefs,
-	initializePeerConnection,
-} from "./video";
+import { startWebcam, answerCall, createCallOffer, hangupCall, initializeRefs, initializePeerConnection } from "./video";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Video } from "lucide-react";
@@ -71,7 +64,7 @@ const questions = [
 	"What is your favorite genre of books or movies?",
 	"What is your morning routine?",
 	"What motivates you to work hard?",
-	"What do you usually do on holidays?"
+	"What do you usually do on holidays?",
 ];
 
 function App() {
@@ -122,24 +115,14 @@ function App() {
 					<div className="flex-1 flex flex-col gap-4">
 						<div className="grid grid-cols-2 gap-4 flex-1 h-[80vh]">
 							<Card className="relative overflow-hidden bg-sky-50 shadow-lg border-sky-100 h-full">
-								<video
-									ref={refs.webcamVideo}
-									autoPlay
-									playsInline
-									className="w-full h-full object-cover"
-								/>
+								<video ref={refs.webcamVideo} autoPlay playsInline className="w-full h-full object-cover" />
 								<div className="absolute bottom-3 left-3 bg-sky-500/90 text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2">
 									<Video className="h-4 w-4" />
 									You
 								</div>
 							</Card>
 							<Card className="relative overflow-hidden bg-sky-50 shadow-lg border-sky-100 h-full">
-								<video
-									ref={refs.remoteVideo}
-									autoPlay
-									playsInline
-									className="w-full h-full object-cover"
-								/>
+								<video ref={refs.remoteVideo} autoPlay playsInline className="w-full h-full object-cover" />
 								<div className="absolute bottom-3 left-3 bg-sky-500/90 text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2">
 									<Video className="h-4 w-4" />
 									Partner
@@ -149,11 +132,7 @@ function App() {
 						<Card className="bg-white/80 backdrop-blur border-sky-100 shadow-md">
 							<div className="p-4 flex justify-center">
 								<Link href="/dashboard" className="block">
-									<Button
-										ref={refs.hangupButton}
-										onClick={hangupCall}
-										className="bg-red-400 hover:bg-red-600 px-6"
-									>
+									<Button ref={refs.hangupButton} onClick={hangupCall} className="bg-red-400 hover:bg-red-600 px-6">
 										End Call
 									</Button>
 								</Link>
@@ -166,10 +145,7 @@ function App() {
 								<h2 className="text-xl font-semibold text-sky-900 mb-6">Conversation Starters</h2>
 								<div className="flex-1 overflow-y-auto space-y-3">
 									{questions.map((question, index) => (
-										<Card
-											key={index}
-											className="p-3 bg-sky-50 hover:bg-sky-100/80 transition-colors border-sky-100"
-										>
+										<Card key={index} className="p-3 bg-sky-50 hover:bg-sky-100/80 transition-colors border-sky-100">
 											<p className="text-sm text-sky-900">{question}</p>
 										</Card>
 									))}
